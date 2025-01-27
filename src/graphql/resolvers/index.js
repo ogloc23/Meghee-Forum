@@ -41,15 +41,20 @@ const resolvers = {
           username,
           email,
           password: hashedPassword,
+          role: "user",
         });
   
         await newUser.save();
+
+        console.log('Saved User:', newUser);
   
         // Return the created user (or any success message)
         return {
           id: newUser.id,
           username: newUser.username,
           email: newUser.email,
+          role: newUser.role,
+          createdAt: newUser.createdAt,
         };
       },
 
